@@ -2,17 +2,13 @@ var adiciona = document.querySelector("#btnAdiciona");
 adiciona.addEventListener("click",adicionaT);
 
 function adicionaT(){
+    var adiciona = document.querySelector("#btnAdiciona"),
+        form = document.querySelector("#form-adiciona"),
+        paciente = dadosForm(form),
+        Nlinha = montaTr(paciente),
+        tabela = document.querySelector("#tabela-pacientes");
+    
     event.preventDefault();
-    
-    
-    var form = document.querySelector("#form-adiciona");
-
-    var paciente = dadosForm(form);
-    
-    var Nlinha = montaTr(paciente);
-
-    var tabela = document.querySelector("#tabela-pacientes");
-
     tabela.appendChild(Nlinha);
     form.reset();
 
@@ -35,18 +31,13 @@ function dadosForm(form)
 
 function montaTr(paciente)
 {
-    var Npaciente = document.createElement("tr");
-    Npaciente.classList.add("paciente");
-    
-
-    
-    var Npeso = montaTd(paciente.peso,"peso");
-    var Naltura = montaTd(paciente.altura,"altura");
-    var Ngordura = montaTd(paciente.gordura,"gordura");
-    var Nimc = montaTd(paciente.imc,"imc");
-    
-     
-        
+    var Npaciente = document.createElement("tr"),       
+        Npeso = montaTd(paciente.peso,"peso"),
+        Naltura = montaTd(paciente.altura,"altura"),
+        Ngordura = montaTd(paciente.gordura,"gordura"),
+        Nimc = montaTd(paciente.imc,"imc");     
+         
+    Npaciente.classList.add("paciente");    
     Npaciente.appendChild(montaTd(paciente.nome,"nome"));
     Npaciente.appendChild(Npeso);
     Npaciente.appendChild(Naltura);
