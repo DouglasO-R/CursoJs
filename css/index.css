@@ -145,3 +145,13 @@ color: red;
 	opacity: 0;
 	transition: 0.5;
 }
+
+#pesquisar-tabela {
+	width:  200px;
+	height: 35px;
+	margin-bottom: 10px;
+}
+
+.invisivel {
+	display: none;
+}

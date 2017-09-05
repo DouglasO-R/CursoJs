@@ -2,25 +2,31 @@ var adiciona = document.querySelector("#btnAdiciona");
 adiciona.addEventListener("click",adicionaT);
 
 function adicionaT(){
+    event.preventDefault();
+
     var adiciona = document.querySelector("#btnAdiciona"),
         form = document.querySelector("#form-adiciona"),
         paciente = dadosForm(form),
-        Nlinha = montaTr(paciente),
         erros = validaPaciente(paciente),  
-        msgErro = document.querySelector("#mensagem-erro"),
-        tabela = document.querySelector("#tabela-pacientes");
+        msgErro = document.querySelector("#mensagem-erro");      
 
-    form.reset();
-    event.preventDefault();
-    console.log(erros);
     if (erros.length > 0){
         exibeErro(erros);
         return;
     }
-    msgErro.innerHTML = "";
-    tabela.appendChild(Nlinha);  
-    
-    console.log(paciente);    
+
+    adicionaTabela(paciente);
+
+    form.reset();
+
+    msgErro.innerHTML = "";   
+  
+}
+
+function adicionaTabela(paciente) {
+    var Nlinha = montaTr(paciente);
+    var tabela = document.querySelector("#tabela-pacientes");
+    tabela.appendChild(Nlinha);
 }
 
 function dadosForm(form)
